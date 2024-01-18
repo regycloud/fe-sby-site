@@ -1,0 +1,80 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  margin-bottom: 0%;
+}
+
+.banner {
+  min-height: none;
+  color: #fff;
+  justify-content: center;
+  display: flex;
+  background-color: #1a1a1a;
+  padding-left: 20px;
+}
+
+.column {
+  flex: 1;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #1a1a1a;
+}
+
+/* Set a fixed width for each column */
+.column {
+  flex-basis: calc(50% - 20px);
+  /* Adjust the width as needed */
+}
+
+/* Style for the first container (70%) */
+.container .left-column {
+  flex: 70%;
+  position: relative;
+}
+
+/* Style for the second container (30%) */
+.container .right-column {
+  position: relative;
+}
+
+/* Style for the images inside each container */
+.container .left-column img,
+.container .right-column img {
+  width: 100%; /* Make images fill their containers */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove default inline behavior */
+}
+
+/* Position the first image on the left */
+.container .left-column img {
+  left: 0;
+  top: 0;
+}
+
+/* Position the second image on the right */
+.container .right-column img {
+  display: block;
+  justify-content: flex-end;
+}
