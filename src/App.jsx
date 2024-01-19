@@ -9,7 +9,6 @@ import logo2 from './assets/logo2.png';
 
 const TableComponent = ({ data }) => {
   const filledArray = data[0].map((_, index) => (index < data[0].length ? data[0][index] : ''));
-  console.log(filledArray)
 
   return (
     <table border="1" width={'100%'}>
@@ -38,7 +37,7 @@ const Time = () => {
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()));
-  }, 1000);
+  }, []);
 
   const [time, setTime] = useState(new Date());
   const formattedTime = time.toLocaleTimeString("en-US");
@@ -53,11 +52,11 @@ const Banner = ({title, flex, color}) => {
   )
 }
 
-const Footer = ({flex}) => {
+const Footer = ({data}) => {
   return (
     <div className="footer-container">
       <div className="id-column footer-column">08.00.13</div>
-      <div className="marquee-column footer-column"><Marquee /></div>
+      <div className="marquee-column footer-column"><Marquee data={data} /></div>
       <div className="time-column footer-column"><Time /></div>
     </div>
   );
@@ -76,10 +75,10 @@ const Header = () => {
   )
 }
 
-const Marquee = () => {
+const Marquee = ({data}) => {
   return (
       <marquee behavior="scroll" direction="left" scrollamount="5">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique cumque debitis voluptates corrupti, ad ipsa dolore natus omnis blanditiis nulla magni illo laudantium doloremque officiis architecto quidem? Dicta, ea placeat?
+        {data}
       </marquee>
   );
 };
@@ -125,7 +124,7 @@ function App() {
         {data.length > 0 ? <TableComponent data={data[3]} /> : <p>Loading...</p>}
         </div>
       </div>
-      <Footer />
+      <Footer data={data[4]} />
     </>
   )
 }
