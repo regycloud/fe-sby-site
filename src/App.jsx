@@ -33,6 +33,19 @@ const TableComponent = ({ data }) => {
   );
 };
 
+const Time = () => {
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()));
+  }, 1000);
+
+  const [time, setTime] = useState(new Date());
+  const formattedTime = time.toLocaleTimeString("en-US");
+  return(
+    <h3>{formattedTime}</h3>
+  )
+}
+
 const Banner = ({title, flex, color}) => {
   return(
     <h2 className='banner' style={{'flex':flex, 'backgroundColor':color}}>{title}</h2>
@@ -105,7 +118,7 @@ function App() {
         </div>
       </div>
 
-      <Marquee/>
+      <Time /><Marquee/>
     </>
   )
 }
