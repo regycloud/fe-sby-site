@@ -78,3 +78,42 @@ body {
   display: block;
   justify-content: flex-end;
 }
+
+.footer-container {
+  font-size: large;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 8vh;
+  max-height: 10vh;
+  background-color: #1a1a1a;
+}
+
+.footer-column {
+  overflow: hidden;
+}
+
+/* Add styles for each column as needed */
+.id-column {
+  flex: 1; /* Adjust the flex ratio as needed */
+  max-width: 10%; /* Set a maximum width if necessary */
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.marquee-column {
+  flex: 8; /* Adjust the flex ratio as needed */
+  max-width: 80%; /* Set a maximum width if necessary */
+  
+}
+
+.time-column {
+  flex: 1; /* Adjust the flex ratio as needed */
+  font-size: 100%;
+  max-width: 10%; /* Set a maximum width if necessary */
+  padding-left: 2%;
+  padding-right: 2%;
+  
+}
+

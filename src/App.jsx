@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
 import './App.css'
@@ -42,7 +43,7 @@ const Time = () => {
   const [time, setTime] = useState(new Date());
   const formattedTime = time.toLocaleTimeString("en-US");
   return(
-    <h3>{formattedTime}</h3>
+    <>{formattedTime}</>
   )
 }
 
@@ -50,6 +51,16 @@ const Banner = ({title, flex, color}) => {
   return(
     <h2 className='banner' style={{'flex':flex, 'backgroundColor':color}}>{title}</h2>
   )
+}
+
+const Footer = ({flex}) => {
+  return (
+    <div className="footer-container">
+      <div className="id-column footer-column">08.00.13</div>
+      <div className="marquee-column footer-column"><Marquee /></div>
+      <div className="time-column footer-column"><Time /></div>
+    </div>
+  );
 }
 
 const Header = () => {
@@ -67,11 +78,9 @@ const Header = () => {
 
 const Marquee = () => {
   return (
-    <div className="marquee-container">
       <marquee behavior="scroll" direction="left" scrollamount="5">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique cumque debitis voluptates corrupti, ad ipsa dolore natus omnis blanditiis nulla magni illo laudantium doloremque officiis architecto quidem? Dicta, ea placeat?
       </marquee>
-    </div>
   );
 };
 
@@ -86,7 +95,6 @@ function App() {
   const getData = async () => {
     const response = await axios.get('https://ruby-uptight-swallow.cyclic.app/req');
     setData(response.data)
-    // console.log(response.data)
   }
   
 
@@ -117,8 +125,7 @@ function App() {
         {data.length > 0 ? <TableComponent data={data[3]} /> : <p>Loading...</p>}
         </div>
       </div>
-
-      <Time /><Marquee/>
+      <Footer />
     </>
   )
 }
