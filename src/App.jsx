@@ -5,6 +5,8 @@ import './App.css'
 import axios from "axios";
 import mainlogo from'./assets/logo1.png';
 import logo2 from './assets/logo2.png';
+import recycle from './assets/recycle.png';
+import signs from './assets/signs.png';
 
 
 const TableComponent = ({ data }) => {
@@ -60,6 +62,28 @@ const Footer = ({data}) => {
       <div className="time-column footer-column"><Time /></div>
     </div>
   );
+
+  
+}
+
+const Signs = ({data}) => {
+  return (
+    <div className="container padding-zero">
+        <div className="column-20 padding-zero" >
+          <img src={recycle} className="img-recycle"/>
+        </div>
+        <div className="column signs-text padding-zero">
+          <div>PT WIRASWASTA GEMILANG INDONESIA CABANG SIDOARJO</div>
+          <div>JL. RAYA TROPODO NO. 20 DESA TROPODO KRIAN SURABAYA</div>
+          <div>WA : 0881022295933, email : wgisby@ptwgi.com</div>
+        </div>
+        <div className="column-30 padding-zero" >
+          <div><img src={signs} className="img-signs"/></div>
+        </div>
+      </div>
+  );
+
+  
 }
 
 const Header = () => {
@@ -77,8 +101,8 @@ const Header = () => {
 
 const Marquee = ({data}) => {
   return (
-      <marquee behavior="scroll" direction="left" scrollamount="5">
-        {data}
+      <marquee behavior="scroll" direction="left" scrollamount="8">
+        <span>{data}</span>
       </marquee>
   );
 };
@@ -94,6 +118,7 @@ function App() {
   const getData = async () => {
     const response = await axios.get('https://ruby-uptight-swallow.cyclic.app/req');
     setData(response.data)
+    console.log(data);
   }
   
 
@@ -105,7 +130,6 @@ function App() {
         <Banner title={'LOG BOOK LIMBAH B3'} flex={'60%'} color={'green'}/>
         <Banner title={'STOK GUDANG'} flex={'30%'}/>
       </div>
-
       <div className='container'>
         <div className='column' style={{'flex':'70%'}}>
         {data.length > 0 ? <TableComponent data={data[0]} /> : <p>Loading...</p>}
@@ -114,8 +138,6 @@ function App() {
         {data.length > 0 ? <TableComponent data={data[2]} /> : <p>Loading...</p>}
         </div>
       </div>
-      
-
       <div className='container'>
         <div className='column' style={{'flex':'70%'}}>
         {data.length > 0 ? <TableComponent data={data[1]} /> : <p>Loading...</p>}
@@ -124,6 +146,7 @@ function App() {
         {data.length > 0 ? <TableComponent data={data[3]} /> : <p>Loading...</p>}
         </div>
       </div>
+      <Signs />
       <Footer data={data[4]} />
     </>
   )
