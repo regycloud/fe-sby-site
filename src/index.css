@@ -126,7 +126,7 @@ body {
 
 .img-signs {
   max-width: 100%;
-  height: 50%;
+  max-height: 50%;
 }
 
 .signs-text {
