@@ -12,6 +12,8 @@
 }
 
 body {
+  transform: scale(0.68);
+  transform-origin: top center;
   margin: 0;
 }
 
