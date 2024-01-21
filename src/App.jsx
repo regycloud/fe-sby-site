@@ -131,7 +131,7 @@ const Tables = ({data}) => {
         <div className='column' style={{'flex':'60%'}}>
         {data.length > 0 ? <Table data={data[0]} color={'dodgerblue'} /> : <p>Loading...</p>}
         </div>
-        <div className='column' style={{'paddingRight':}}>
+        <div className='column' style={{'paddingRight': 0}}>
         {data.length > 0 ? <Table data={data[1]} color={'green'} /> : <p>Loading...</p>}
         </div>
       </div>

@@ -127,6 +127,7 @@ body {
 .img-signs {
   max-width: 100%;
   max-height: 50%;
+  object-fit: contain;
 }
 
 .signs-text {
