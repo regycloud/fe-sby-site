@@ -88,7 +88,7 @@ const Signs = () => {
           <div>JL. RAYA TROPODO NO. 20 DESA TROPODO KRIAN SURABAYA</div>
           <div>WA : 0881022295933, email : wgisby@ptwgi.com</div>
         </div> */}
-        <div className="padding-zero" >
+        <div className="pr-20" >
           <div><img src={signs} className="img-signs"/></div>
         </div>
       </div>
@@ -131,7 +131,7 @@ const Tables = ({data}) => {
         <div className='column' style={{'flex':'60%'}}>
         {data.length > 0 ? <Table data={data[0]} color={'dodgerblue'} /> : <p>Loading...</p>}
         </div>
-        <div className='column'>
+        <div className='column' style={{'paddingRight': 0}}>
         {data.length > 0 ? <Table data={data[1]} color={'green'} /> : <p>Loading...</p>}
         </div>
       </div>
@@ -150,8 +150,8 @@ const Tables = ({data}) => {
         </div>
         <div className='row'>
         </div>
-        <div className='column'>
-          <Banner title={'SIMBOL LIMBAH B3'} color={'royalblue'} />
+        <div className='column' style={{'paddingRight' : 0}}>
+          <Banner title={'SIMBOL LIMBAH B3'} color={'royalblue'} style={{'paddingRight' : 20}} />
           <Signs />
         </div>
       </div>
