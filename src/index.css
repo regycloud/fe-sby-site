@@ -18,18 +18,19 @@ body {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: #1a1a1a;
   margin-bottom: 0%;
 }
 
 .banner {
-  min-height: none;
+  min-height: 5vh;
   color: #fff;
   justify-content: center;
   display: flex;
   background-color: #1a1a1a;
   padding-left: 20px;
+  margin-top: 0;
+  align-items: center;
 }
 
 .column {
@@ -80,7 +81,7 @@ body {
 }
 
 .footer-container {
-  font-size: large;
+  font-size: 20pt;
   font-weight: 500;
   display: flex;
   justify-content: space-between;
@@ -97,7 +98,7 @@ body {
 
 /* Add styles for each column as needed */
 .id-column {
-  flex: 1; /* Adjust the flex ratio as needed */
+  flex: 2; /* Adjust the flex ratio as needed */
   padding-left: 2%;
   padding-right: 2%;
 }
@@ -149,3 +150,16 @@ body {
 .padding-zero {
   padding: 0;
 }
+
+.th-1 {
+  font-weight: bold;
+  font-size: 15pt;
+  height: 3vh;
+}
+
+.th-2 {
+  height: 4vh;
+  background-color: yellow;
+  color: black;
+}
+

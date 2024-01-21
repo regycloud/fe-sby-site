@@ -9,25 +9,27 @@ import recycle from './assets/recycle.png';
 import signs from './assets/signs.png';
 
 
-const TableComponent = ({ data }) => {
-  const filledArray = data[0].map((_, index) => (index < data[0].length ? data[0][index] : ''));
-
+const Table = ({ data, color }) => {
   return (
-    <table border="1" width={'100%'}>
+    <table border="3" width={'100%'}>
       <thead>
         <tr>
           {data[0].map((header, index) => (
-            <th key={index} colSpan={index === 0 ? data.length : 1}>{header}</th>
+            <th key={index} colSpan={index === 0 ? data.length : 1} className='th-1' style={{'backgroundColor': color}} >{header}</th>
+          ))}
+        </tr>
+        <tr>
+          {data[1].map((header, index) => (
+            <th key={index} className='th-2'>{header}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {data.slice(1).map((row, rowIndex) => (
+        {data.slice(2).map((row, rowIndex) => (
           <tr key={rowIndex}>
             {row.map((cell, cellIndex) => (
               <td key={cellIndex}>{cell}</td>
             ))}
-
           </tr>
         ))}
       </tbody>
@@ -54,10 +56,19 @@ const Banner = ({title, flex, color}) => {
   )
 }
 
+const ShowDate = () => {
+  const today = new Date();
+  return(
+    <>
+    {today.toLocaleDateString('en-GB')}
+    </>
+  )
+}
+
 const Footer = ({data}) => {
   return (
     <div className="footer-container">
-      <div className="id-column footer-column">08.00.13</div>
+      <div className="id-column footer-column"><ShowDate /></div>
       <div className="marquee-column footer-column"><Marquee data={data} /></div>
       <div className="time-column footer-column"><Time /></div>
     </div>
@@ -66,18 +77,18 @@ const Footer = ({data}) => {
   
 }
 
-const Signs = ({data}) => {
+const Signs = () => {
   return (
     <div className="container padding-zero">
-        <div className="column-20 padding-zero" >
+        <div className="padding-zero" >
           <img src={recycle} className="img-recycle"/>
         </div>
-        <div className="column signs-text padding-zero">
+        {/* <div className="column signs-text padding-zero">
           <div>PT WIRASWASTA GEMILANG INDONESIA CABANG SIDOARJO</div>
           <div>JL. RAYA TROPODO NO. 20 DESA TROPODO KRIAN SURABAYA</div>
           <div>WA : 0881022295933, email : wgisby@ptwgi.com</div>
-        </div>
-        <div className="column-30 padding-zero" >
+        </div> */}
+        <div className="padding-zero" >
           <div><img src={signs} className="img-signs"/></div>
         </div>
       </div>
@@ -88,25 +99,65 @@ const Signs = ({data}) => {
 
 const Header = () => {
   return(
-    <div className='container'>
-      <div className='left-column'>
-        <img src={mainlogo} style={{'maxWidth': '500px'}}></img>
+    <>
+      {/* <div className='container'>
+        <div className='left-column'>
+          <img src={mainlogo} style={{'maxWidth': '500px'}}></img>
+        </div>
+        <div className='right-column'>
+          <img src={logo2} style={{'maxWidth': '200px'}}></img>
+        </div>
+      </div> */}
+      <div>
+        <Banner title={'LOG BOOK LIMBAH B3'} flex={'100%'} color={'green'}/>
       </div>
-      <div className='right-column'>
-        <img src={logo2} style={{'maxWidth': '200px'}}></img>
-      </div>
-    </div>
+    </>
   )
 }
 
 const Marquee = ({data}) => {
   return (
-      <marquee behavior="scroll" direction="left" scrollamount="8">
+      <marquee behavior="scroll" direction="left" scrollamount="3">
         <span>{data}</span>
       </marquee>
   );
 };
 
+const Tables = ({data}) => {
+  return(
+    <>
+      <div className='container'>
+        {/* Upper Table */}
+        <div className='column' style={{'flex':'60%'}}>
+        {data.length > 0 ? <Table data={data[0]} color={'dodgerblue'} /> : <p>Loading...</p>}
+        </div>
+        <div className='column'>
+        {data.length > 0 ? <Table data={data[1]} color={'green'} /> : <p>Loading...</p>}
+        </div>
+      </div>
+      {/* Bottom Table */}
+      <div className='container'>
+        <div className='column row full-width' style={{'flex': '60%'}}>
+          <Banner title={'STOK LIMBAH B3'} style={{'display' : 'flex'}} color={'green'}/>
+            <div style={{'display':'flex', 'width':'100%'}}>
+              <div style={{'width':'50%'}}>
+              {data.length > 0 ? <Table data={data[2]} color={'blue'} /> : <p>Loading...</p>}
+              </div>
+              <div style={{'paddingLeft':'8vh', 'width':'50%'}}>
+              {data.length > 0 ? <Table data={data[3]} color={'green'} /> : <p>Loading...</p>}
+              </div>
+            </div>
+        </div>
+        <div className='row'>
+        </div>
+        <div className='column'>
+          <Banner title={'SIMBOL LIMBAH B3'} color={'royalblue'} />
+          <Signs />
+        </div>
+      </div>
+    </>
+  )
+}
 
 function App() {
   const [data, setData] = useState([]);
@@ -118,35 +169,13 @@ function App() {
   const getData = async () => {
     const response = await axios.get('https://ruby-uptight-swallow.cyclic.app/req');
     setData(response.data)
-    console.log(data);
   }
-  
-
 
   return (
     <>
       <Header />
-      <div className='container'>
-        <Banner title={'LOG BOOK LIMBAH B3'} flex={'60%'} color={'green'}/>
-        <Banner title={'STOK GUDANG'} flex={'30%'}/>
-      </div>
-      <div className='container'>
-        <div className='column' style={{'flex':'70%'}}>
-        {data.length > 0 ? <TableComponent data={data[0]} /> : <p>Loading...</p>}
-        </div>
-        <div className='column'>
-        {data.length > 0 ? <TableComponent data={data[2]} /> : <p>Loading...</p>}
-        </div>
-      </div>
-      <div className='container'>
-        <div className='column' style={{'flex':'70%'}}>
-        {data.length > 0 ? <TableComponent data={data[1]} /> : <p>Loading...</p>}
-        </div>
-        <div className='column'>
-        {data.length > 0 ? <TableComponent data={data[3]} /> : <p>Loading...</p>}
-        </div>
-      </div>
-      <Signs />
+      <Tables data={data} />
+      {/* <Signs /> */}
       <Footer data={data[4]} />
     </>
   )
