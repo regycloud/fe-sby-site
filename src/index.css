@@ -9,11 +9,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 1.5vh;
 }
 
 body {
-  transform: scale(0.68);
-  transform-origin: top center;
   margin: 0;
 }
 
@@ -83,7 +82,7 @@ body {
 }
 
 .footer-container {
-  font-size: 20pt;
+  font-size: 2.5vh;
   font-weight: 500;
   display: flex;
   justify-content: space-between;
@@ -155,7 +154,7 @@ body {
 
 .th-1 {
   font-weight: bold;
-  font-size: 15pt;
+  font-size: 2vh;
   height: 3vh;
 }
 
