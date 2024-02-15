@@ -67,7 +67,7 @@ const Footer = ({data}) => {
   return (
     <div className="footer-container">
       <div className="id-column footer-column"><ShowDate /></div>
-      <div className="marquee-column footer-column"><Marquee data={data} /></div>
+      <div className="marquee-column footer-column" style={{'color' : 'yellow', 'fontSize': '30PX'}}><Marquee data={data} /></div>
       <div className="time-column footer-column"><Time /></div>
     </div>
   );
@@ -129,18 +129,19 @@ const Tables = ({data}) => {
         <div className='column' style={{'flex':'60%'}}>
         {data.length > 0 ? <Table data={data[0]} color={'dodgerblue'} /> : <p>Loading...</p>}
         </div>
-        <div className='column' style={{'paddingRight': 0}}>
+        <div className='column' style={{paddingRight:'5vh'}}>
         {data.length > 0 ? <Table data={data[1]} color={'green'} /> : <p>Loading...</p>}
         </div>
       </div>
       {/* Bottom Table */}
       <div className='container'>
-        <div className='column row full-width' style={{'flex': '60%'}}>
+        <div className='column row full-width' style={{'flex': '60%', }}>
           <Banner title={'STOK LIMBAH B3'} style={{'display' : 'flex'}} color={'green'}/>
             <div style={{'display':'flex', 'width':'100%'}}>
               <div style={{'width':'50%'}}>
               {data.length > 0 ? <Table data={data[2]} color={'blue'} /> : <p>Loading...</p>}
               </div>
+              {/* stok limbah B3 */}
               <div style={{'paddingLeft':'8vh', 'width':'50%'}}>
               {data.length > 0 ? <Table data={data[3]} color={'green'} /> : <p>Loading...</p>}
               </div>
@@ -148,8 +149,8 @@ const Tables = ({data}) => {
         </div>
         <div className='row'>
         </div>
-        <div className='column' style={{'paddingRight' : 0}}>
-          <Banner title={'SIMBOL LIMBAH B3'} color={'royalblue'} style={{'paddingRight' : 20}} />
+        <div className='column' style={{'paddingRight' : '30px'}}>
+          <Banner title={'SIMBOL LIMBAH B3'} color={'royalblue'} style={{'paddingRight' : '5vh'}} />
           <Signs />
         </div>
       </div>
