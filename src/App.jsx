@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import axios from "axios";
-import mainlogo from'./assets/logo1.png';
-import logo2 from './assets/logo2.png';
 import recycle from './assets/recycle.png';
 import signs from './assets/signs.png';
 
@@ -20,7 +18,7 @@ const Table = ({ data, color }) => {
         </tr>
         <tr>
           {data[1].map((header, index) => (
-            <th key={index} className='th-2'>{header}</th>
+            <th key={index} className='th-2' style={header == 'TUJUAN' ? {'width':'100px'} : {'width':'auto'}}>{header}</th>
           ))}
         </tr>
       </thead>
