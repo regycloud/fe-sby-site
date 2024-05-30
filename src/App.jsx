@@ -13,7 +13,7 @@ const Table = ({ data, color }) => {
       <thead>
         <tr>
           {data[0].map((header, index) => (
-            <th key={index} colSpan={index === 0 ? data.length : 1} className='th-1' style={{'backgroundColor': color}} >{header}</th>
+            <th key={index} colSpan={index === 0 ? data.length +1 : 1} className='th-1' style={{'backgroundColor': color}} >{header}</th>
           ))}
         </tr>
         <tr>
@@ -166,7 +166,10 @@ function App() {
   },[])
   
   const getData = async () => {
-    const response = await axios.get('https://ruby-uptight-swallow.cyclic.app/req');
+    const response = await axios.get('https://524c-103-136-25-38.ngrok-free.app/req',  {headers: {
+      "ngrok-skip-browser-warning":"any"
+    },}     
+    );
     setData(response.data)
   }
 

@@ -1,8 +1,13 @@
 #root {
   /* max-width: 1280px; */
   max-width: 100%;
+  zoom: 98.4%;
   margin: 0 auto;
   text-align: center;
+}
+Table {
+  font-weight: 900;
+
 }
 
 @keyframes logo-spin {
