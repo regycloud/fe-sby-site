@@ -6,6 +6,9 @@ import axios from "axios";
 import recycle from './assets/recycle.png';
 import signs from './assets/signs.png';
 
+// In order using ngrok, please recheck to add headers to skip
+const endPoint = 'https://01c6-103-136-25-38.ngrok-free.app/req'
+
 
 const Table = ({ data, color }) => {
   return (
@@ -38,6 +41,7 @@ const Table = ({ data, color }) => {
 const Time = () => {
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const timer = setInterval(() => setTime(new Date()));
   }, []);
 
@@ -166,7 +170,7 @@ function App() {
   },[])
   
   const getData = async () => {
-    const response = await axios.get('https://524c-103-136-25-38.ngrok-free.app/req',  {headers: {
+    const response = await axios.get(endPoint,  {headers: {
       "ngrok-skip-browser-warning":"any"
     },}     
     );
