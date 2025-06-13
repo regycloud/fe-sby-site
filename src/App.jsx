@@ -16,7 +16,7 @@ const Table = ({ data, color }) => {
       <thead>
         <tr>
           {data[0].map((header, index) => (
-            <th key={index} colSpan={index === 0 ? data.length +1 : 1} className='th-1' style={{'backgroundColor': color}} >{header}</th>
+            <th key={index} colSpan={index === 0 ? data.length +2 : 4} className='th-1' style={{'backgroundColor': color}} >{header}</th>
           ))}
         </tr>
         <tr>
